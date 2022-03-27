@@ -1,17 +1,17 @@
 const { Pool } = require('pg');
-const dotenv = require('dotenv');
 
-dotenv.config();
+/**
+ * Database connection
+ */
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
-// connection with database
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL
-});
-
-pool.on('connect', () => {
-    console.log('Database connected');
+pool.connect(err => {
+    if (err) console.error(`Connection error: ${err.stack}`);
+    else console.log('Database Connected');
 });
 
 module.exports = {
-    query: (text, params, callback) => pool.query(text, params, callback)
+    query: (sqlQuery, params) => pool.query(sqlQuery, params)
+        .then(res => ({ status: 'ok', content: res.rows[0] }))
+        .catch(err => ({ status: 'error', content: err }))
 };
