@@ -1,8 +1,6 @@
 const { Pool } = require('pg');
 
-/**
- * Database connection
- */
+// Database connection
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 pool.connect(err => {
@@ -12,6 +10,6 @@ pool.connect(err => {
 
 module.exports = {
     query: (sqlQuery, params) => pool.query(sqlQuery, params)
-        .then(res => ({ status: 'ok', content: res.rows[0] }))
+        .then(res => ({ status: 'ok', content: res.rows }))
         .catch(err => ({ status: 'error', content: err }))
 };

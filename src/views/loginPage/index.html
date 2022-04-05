@@ -4,40 +4,51 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Finance</title>
         <link rel="shortcut icon" href="favicon.ico?v=1.1" type="image/x-icon">
         <link rel="stylesheet" href="public/css/globalStyle/normalize.css">
-        <link rel="stylesheet" href="public/css/homePage/style.css">
-        <script src="public/js/homePage/script.js"></script>
-        <title>My Finance</title>
+        <link rel="stylesheet" href="public/css/globalStyle/global.css">
+        <link rel="stylesheet" href="public/css/globalStyle/navbar.css">
+        <link rel="stylesheet" href="public/css/loginPage/style.css">
+        <script src="public/js/loginPage/script.js"></script>
     </head>
     <body>
-        <h1>My Finance</h1>
+        <header>
+            <h1>My Finance</h1>
+        </header>
         <main>
             <section class="form" id="formLogin">
                 <h2>Access my Account</h2>
                 <form action="#" method="post" id="frmLogin">
-                    <div id="email_field_login">
+                    <div id="email_field_login" class="form_field">
                         <input type="email" id="txtEmailLogin" name="txtEmail" placeholder="E-mail">
                     </div>
-                    <div id="password_field_login">
+                    <div id="password_field_login" class="form_field">
                         <input type="password" id="txtPasswordLogin" name="txtPassword" placeholder="Password">
                     </div>
-                    <button id="btnEnter" type="button">Enter</button>
+                    <div id="forgot_password_link" class="form_field">
+                        <a href="#">Forgot my password</a>
+                    </div>
+                    <div id="button_login" class="form_field">
+                        <button id="btnEnter" type="button">Enter</button>
+                    </div>
                 </form>
             </section>
             <section class="form" id="formRegister">
                 <h2>Register new Account</h2>
                 <form action="#" method="post" id="frmRegister">
-                    <div id="name_field_register">
+                    <div id="name_field_register" class="form_field">
                         <input type="text" id="txtNameRegister" name="txtName" placeholder="Name">
                     </div>
-                    <div id="email_field_register">
+                    <div id="email_field_register" class="form_field">
                         <input type="email" id="txtEmailRegister" name="txtEmail" placeholder="E-mail">
                     </div>
-                    <div id="password_field_register">
+                    <div id="password_field_register" class="form_field">
                         <input type="password" id="txtPasswordRegister" name="txtPassword" placeholder="Password">
                     </div>
-                    <button id="btnRegister" type="button">Register</button>
+                    <div id="button_register" class="form_field">
+                        <button id="btnRegister" type="button">Register</button>
+                    </div>
                 </form>
             </section>
         </main>

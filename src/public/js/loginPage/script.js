@@ -24,16 +24,13 @@ function accessPlatform(formName, reqType) {
         headers: new Headers({ "Content-Type": "application/json" }),
         body: JSON.stringify(objFields)
     }).then(response => {
-        response.text().then(result => {
-            document.querySelector('footer marquee')?.remove();
-
-            let lblResult = document.createElement('marquee');
-            lblResult.innerText = result;
-            document.querySelector('footer').appendChild(lblResult);
+        response.json().then(result => {
+            if (result?.status == 'ok')
+                window.location.reload();
+            else
+                alert(result?.content);
         });
-    }).catch(err => {
-        console.error(err);
-    });
+    }).catch(err => alert(err));
 }
 
 window.onload = () => {

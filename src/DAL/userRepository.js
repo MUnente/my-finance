@@ -6,11 +6,12 @@ module.exports = {
         const query = `
             SELECT 
                 id_user,
-                nm_username
-            FROM tb_user 
+                nm_username,
+                em_email
+            FROM mf.tb_user 
             WHERE 
                 em_email = $1 AND
-                fn_criptography(ps_password, false) = $2;`;
+                mf.fn_criptography(ps_password, false) = $2;`;
         const params = [ txtEmailLogin, txtPasswordLogin ];
 
         try {
@@ -26,17 +27,16 @@ module.exports = {
     },
 
     async insertUser(formFields) {
-        
         const { txtNameRegister, txtEmailRegister, txtPasswordRegister } = formFields;
 
         const query = `
-            INSERT INTO tb_user (
+            INSERT INTO mf.tb_user (
                 nm_username, 
                 em_email, 
                 ps_password
             ) 
             VALUES ($1, $2, $3) 
-            RETURNING id_user, nm_username;`;
+            RETURNING id_user, nm_username, em_email;`;
         const params = [ txtNameRegister, txtEmailRegister, txtPasswordRegister ];
 
         try {
