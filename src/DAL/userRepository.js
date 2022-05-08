@@ -5,7 +5,7 @@ module.exports = {
         const { txtEmailLogin, txtPasswordLogin } = formFields;
         const query = `
             SELECT 
-                id_user,
+                pk_userid,
                 nm_username,
                 em_email
             FROM mf.tb_user 
@@ -36,7 +36,7 @@ module.exports = {
                 ps_password
             ) 
             VALUES ($1, $2, $3) 
-            RETURNING id_user, nm_username, em_email;`;
+            RETURNING pk_userid, nm_username, em_email;`;
         const params = [ txtNameRegister, txtEmailRegister, txtPasswordRegister ];
 
         try {

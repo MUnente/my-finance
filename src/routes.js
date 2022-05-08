@@ -11,7 +11,13 @@ router.get('/', (req, res) => {
     res.sendFile(`${__dirname}/views/homePage/index.html`);
 });
 
+// #region Authentication
 router.post('/login', authController.login);
 router.post('/register', authController.register);
+// #endregion
+
+router.get('/list', (req, res) => {
+    res.sendFile(`${__dirname}/views/homePage/index.html`);
+});
 
 module.exports = router;
